@@ -9,14 +9,15 @@ import styled from 'styled-components';
 //will return react component.
 //with styled-component we can define css with regular css syntax
 const StyledButton = styled.button`
-  background-color: green;
+  background-color: ${props => props.alt ? 'red' : 'green'};
+  color: white;
   font: inherit;
   border: 1px solid blue;
   padding: 8px;
   cursor: pointer;
 
   &:hover {
-    background-color: lightgreen;
+    background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
     color: black
   }
 `;
@@ -89,17 +90,17 @@ class App extends Component {
   render() {
     //NOTE: There are two ways for syling in React 1. with CSS File. 2.With inline style
     //this sample for inline styles 
-    const sampleInlineStyle = {
-      backgroundColor: 'green',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer',
-      ':hover': {
-        backgroundColor: 'lightgreen',
-        color: 'black'
-      }
-    }
+    // const sampleInlineStyle = {
+    //   backgroundColor: 'green',
+    //   font: 'inherit',
+    //   border: '1px solid blue',
+    //   padding: '8px',
+    //   cursor: 'pointer',
+    //   ':hover': {
+    //     backgroundColor: 'lightgreen',
+    //     color: 'black'
+    //   }
+    // }
 
     let persons = null;
 
@@ -117,11 +118,11 @@ class App extends Component {
           })}
         </div>
       );
-      sampleInlineStyle.backgroundColor = 'red'
-      sampleInlineStyle[':hover'] = {
-        backgroundColor: 'salmon',
-        color: 'black'
-      }
+      // sampleInlineStyle.backgroundColor = 'red'
+      // sampleInlineStyle[':hover'] = {
+      //   backgroundColor: 'salmon',
+      //   color: 'black'
+      // }
     }
 
     const classes = [];
@@ -140,7 +141,7 @@ class App extends Component {
           style={sampleInlineStyle} 
           onClick={this.switchHandler.bind(this, 'You are awesome')}>Switch</button> */}
 
-        <StyledButton onClick={this.togglePersonHandle}>
+        <StyledButton alt={this.state.showPersons} onClick={this.togglePersonHandle}>
           Switch
         </StyledButton>
         {persons}
