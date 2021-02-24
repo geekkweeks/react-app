@@ -1,8 +1,25 @@
 import './App.css';
 import React, { Component, component } from 'react';
 import Person from './Person/Person';
+import styled from 'styled-components';
 // import UserInput from './UserInput/UserInput'
 // import UserOutput from './UserOutput/userOutput'
+
+
+//will return react component.
+//with styled-component we can define css with regular css syntax
+const StyledButton = styled.button`
+  background-color: green;
+  font: inherit;
+  border: 1px solid blue;
+  padding: 8px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: lightgreen;
+    color: black
+  }
+`;
 
 class App extends Component {
   state = {
@@ -116,18 +133,18 @@ class App extends Component {
     }
 
     return (
-        <div className="App">
-          <h1>This is React APP for expert developer</h1>
-          <p className={classes.join(' ')}>This is only for React JS expert, min 1 day experience</p>
-          {/* <button
+      <div className="App">
+        <h1>This is React APP for expert developer</h1>
+        <p className={classes.join(' ')}>This is only for React JS expert, min 1 day experience</p>
+        {/* <button
           style={sampleInlineStyle} 
           onClick={this.switchHandler.bind(this, 'You are awesome')}>Switch</button> */}
 
-          <button
-            style={sampleInlineStyle}
-            onClick={this.togglePersonHandle}>Switch</button>
-          {persons}
-        </div>
+        <StyledButton onClick={this.togglePersonHandle}>
+          Switch
+        </StyledButton>
+        {persons}
+      </div>
     )
   }
 }
