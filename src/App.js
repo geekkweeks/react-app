@@ -8,19 +8,19 @@ import styled from 'styled-components';
 
 //will return react component.
 //with styled-component we can define css with regular css syntax
-// const StyledButton = styled.button`
-//   background-color: ${props => props.alt ? 'red' : 'green'};
-//   color: white;
-//   font: inherit;
-//   border: 1px solid blue;
-//   padding: 8px;
-//   cursor: pointer;
+const StyledButton = styled.button`
+  background-color: ${props => props.alt ? 'red' : 'green'};
+  color: white;
+  font: inherit;
+  border: 1px solid blue;
+  padding: 8px;
+  cursor: pointer;
 
-//   &:hover {
-//     background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
-//     color: black
-//   }
-// `;
+  &:hover {
+    background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
+    color: black
+  }
+`;
 
 class App extends Component {
   state = {
@@ -141,9 +141,9 @@ class App extends Component {
           style={sampleInlineStyle} 
           onClick={this.switchHandler.bind(this, 'You are awesome')}>Switch</button> */}
 
-        <button className="button" onClick={this.togglePersonHandle}>
+        <StyledButton alt={this.state.showPersons} onClick={this.togglePersonHandle}>
           Switch
-        </button>
+        </StyledButton>
         {persons}
       </div>
     )
