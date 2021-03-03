@@ -1,4 +1,4 @@
-import './App.css';
+import styles from './App.module.css';
 import React, { Component, component } from 'react';
 import Person from './Person/Person';
 import styled from 'styled-components';
@@ -8,19 +8,19 @@ import styled from 'styled-components';
 
 //will return react component.
 //with styled-component we can define css with regular css syntax
-const StyledButton = styled.button`
-  background-color: ${props => props.alt ? 'red' : 'green'};
-  color: white;
-  font: inherit;
-  border: 1px solid blue;
-  padding: 8px;
-  cursor: pointer;
+// const StyledButton = styled.button`
+//   background-color: ${props => props.alt ? 'red' : 'green'};
+//   color: white;
+//   font: inherit;
+//   border: 1px solid blue;
+//   padding: 8px;
+//   cursor: pointer;
 
-  &:hover {
-    background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
-    color: black
-  }
-`;
+//   &:hover {
+//     background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
+//     color: black
+//   }
+// `;
 
 class App extends Component {
   state = {
@@ -103,6 +103,7 @@ class App extends Component {
     // }
 
     let persons = null;
+    let btnClass = '';
 
     if (this.state.showPersons) {
       persons = (
@@ -123,27 +124,28 @@ class App extends Component {
       //   backgroundColor: 'salmon',
       //   color: 'black'
       // }
+      btnClass = styles.Red;
     }
 
-    const classes = [];
+    const assignedClasses = [];
     if (this.state.persons.length <= 2) {
-      classes.push('red');
+      assignedClasses.push(styles.red);
     }
     if (this.state.persons.length <= 1) {
-      classes.push('bold') //it will be ['red', 'bold']
+      assignedClasses.push(styles.bold) //it will be ['red', 'bold']
     }
 
     return (
-      <div className="App">
+      <div className={styles.App}>
         <h1>This is React APP for expert developer</h1>
-        <p className={classes.join(' ')}>This is only for React JS expert, min 1 day experience</p>
+        <p className={assignedClasses.join(' ')}>This is only for React JS expert, min 1 day experience</p>
         {/* <button
           style={sampleInlineStyle} 
           onClick={this.switchHandler.bind(this, 'You are awesome')}>Switch</button> */}
 
-        <StyledButton alt={this.state.showPersons} onClick={this.togglePersonHandle}>
+        <button className={btnClass} onClick={this.togglePersonHandle}>
           Switch
-        </StyledButton>
+        </button>
         {persons}
       </div>
     )
